@@ -139,14 +139,16 @@ class QuestionsViewController: UIViewController {
                     return x
                 } else {
                     textField.placeholder = "x\u{2081},x\u{2082}"
-                    //unicode of subscript 1,2 and algebraic x
+                    //unicode of subscript 1,2
                     //shows user format of roots
                     
                     var x1 = Int.random(in: 1...10)
                     var x2 = Int.random(in: 1...10)
+                    //generates the roots
+                    
                     if Int.random(in: 0...1) == 1 {x1 = x1 * -1}
                     if Int.random(in: 0...1) == 1 {x2 = x2 * -1}
-                    QuestionLabel.text = Exponentize(str: "\u{1D465}^2\(plusMinus(num: (x1+x2)))\u{1D465}\(plusMinus(num: (x1*x2)))")
+                    QuestionLabel.text = Exponentize(str: "\u{1D465}^2\(plusMinus(num: ((-1 * x1) + (-1 * x2))))\u{1D465}\(plusMinus(num: ((-1 * x1)*(-1 * x2))))=0")
                     return "\(x1),\(x2)"
                     
                     
@@ -348,7 +350,7 @@ class QuestionsViewController: UIViewController {
     
     func plusMinus(num: Int) -> String {
         var str = String()
-        if num>0 {
+        if num>=0 {
             str = "+\(num)"
         } else {
             str = "\(num)"
